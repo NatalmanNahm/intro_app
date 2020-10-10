@@ -34,7 +34,7 @@ public class Activity2 extends AppCompatActivity {
             mMessage = "Welcome " + sentUserName;
         } else {
             mWelcomeTextView.setTextColor(Color.parseColor("#C62828"));
-            mMessage = "Username and Password invalid please try again";
+            mMessage = "Username/Password combination is wrong! Please try again";
         }
         mWelcomeTextView.setText(mMessage);
 
