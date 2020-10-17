@@ -2,21 +2,25 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:padding="8dp">
 
     <TextView
         android:id="@+id/contact_name"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimaryDark"/>
     <Button
         android:id="@+id/message_button"
         android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Online"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/colorAccent"/>
+        android:background="@color/colorAccent"/>
 
 </LinearLayout>
