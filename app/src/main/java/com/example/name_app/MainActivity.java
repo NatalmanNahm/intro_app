@@ -2,6 +2,8 @@ package com.example.name_app;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Build;
@@ -12,35 +14,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    //Initialize
-    public EditText mUserEdtText;
-    public EditText mPasswordEditText;
-    public Button mSubmitBtn;
+public class MainActivity extends AppCompatActivity {
+    ArrayList<Contact> contacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Reference EditText and button to their appropriate field
-        mUserEdtText = (EditText) findViewById(R.id.username_EditText);
-        mPasswordEditText = (EditText) findViewById(R.id.password_editText);
-        mSubmitBtn = (Button) findViewById(R.id.submit_btn);
-    }
+        // Lookup the recyclerview in activity layout
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
 
-    public void goToActivity(View view){
-        Log.i("INFO", "Transitioning to " + Activity2.class.getName());
-
-        //Get value of the EditText and format them to string
-        String username = mUserEdtText.getText().toString();
-        String password = mPasswordEditText.getText().toString();
-
-        //Start activity2 and send some data over
-        Intent intent = new Intent(getApplicationContext(), Activity2.class);
-        intent.putExtra("USERNAME", username);
-        intent.putExtra("PASSWORD", password);
-        startActivity(intent);
+        // Initialize contacts
+        contacts = Contact.createContactsList(20);
+        // Create adapter passing in the sample user data
+        ContactAdapter adapter = new ContactAdapter(contacts);
+        // Attach the adapter to the recyclerview to populate items
+        rvContacts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
     }
 }
